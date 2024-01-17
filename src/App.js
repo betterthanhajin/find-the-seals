@@ -3,6 +3,8 @@ import seal from "./seal.svg";
 import React, { useState, useEffect } from "react";
 
 import "./App.css";
+import Forest from "./components/BackgroundChanger";
+import BackgroundChanger from "./components/BackgroundChanger";
 
 const RandomImages = ({ imageSrc, count }) => {
   const [positions, setPositions] = useState([]);
@@ -44,6 +46,7 @@ export default function App() {
   const imgageSrc = seal;
   return (
     <div>
+      <BackgroundChanger />
       <img
         src={forest}
         alt="forest"
