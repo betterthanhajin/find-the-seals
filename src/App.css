@@ -42,3 +42,29 @@ html {
     transform: rotate(360deg);
   }
 }
+
+.forest {
+  background: none;
+  border: none;
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.forest:hover {
+  cursor: pointer;
+  .white-back {
+    opacity: 0.7;
+  }
+}
+
+.white-back {
+  background-color: white;
+  opacity: 0.8;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+}

@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import spring from "../spring-forest.png";
 import summer from "../summer-forest.png";
 import fall from "../fall-forest.png";
@@ -7,35 +7,40 @@ import winter from "../winter-forest.png";
 const backgroundImageUrls = [spring, summer, fall, winter];
 
 const BackgroundChanger = () => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const changeBackground = () => {
-    setCurrentImageIndex(
-      currentImageIndex == 0
-        ? 0
-        : (currentImageIndex + 1) % backgroundImageUrls.length
-    );
+  let [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const changeBackground = (idx) => {
+    setCurrentImageIndex((currentImageIndex = idx));
   };
+
   return (
     <Fragment>
       <div
         style={{
           height: "100vh",
-          background: `url(${backgroundImageUrls[currentImageIndex]}) no-repeat center center fixed`,
+          backgroundImage: `url(${backgroundImageUrls[currentImageIndex]})`,
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center center",
+          backgroundAttachment: "fixed",
           backgroundSize: "cover",
           transition: "background 0.5s",
         }}
       >
-        <button onClick={changeBackground}>
+        <button className="forest" onClick={() => changeBackground(0)}>
+          <div className="white-back"></div>
           <img src={spring} alt="spring" style={{ width: 100, height: 100 }} />
         </button>
-        <button onClick={changeBackground}>
-          <img src={summer} alt="spring" style={{ width: 100, height: 100 }} />
+        <button className="forest" onClick={() => changeBackground(1)}>
+          <div className="white-back"></div>
+          <img src={summer} alt="summer" style={{ width: 100, height: 100 }} />
         </button>
-        <button onClick={changeBackground}>
-          <img src={fall} alt="spring" style={{ width: 100, height: 100 }} />
+        <button className="forest" onClick={() => changeBackground(2)}>
+          <div className="white-back"></div>
+          <img src={fall} alt="fall" style={{ width: 100, height: 100 }} />
         </button>
-        <button onClick={changeBackground}>
-          <img src={winter} alt="spring" style={{ width: 100, height: 100 }} />
+        <button className="forest" onClick={() => changeBackground(3)}>
+          <div className="white-back"></div>
+          <img src={winter} alt="winter" style={{ width: 100, height: 100 }} />
         </button>
       </div>
     </Fragment>
